@@ -14,7 +14,7 @@ model User{
   email String @unique
   password String
   createdAt DateTime @default(now())
-  updateAt DateTime @updatedAt
+  updatedAt DateTime @updatedAt
 
   posts  Post[]
 
@@ -25,10 +25,10 @@ model Post{
   id String @id @default(cuid())
   content String
   createdAt DateTime @default(now())
-  updateAt DateTime @updatedAt
+  updatedAt DateTime @updatedAt
 
   userId String
-  user User @relation(fields: [userId], references: [id], onDelete: Restrict)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("posts")
 }
